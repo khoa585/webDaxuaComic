@@ -1,0 +1,213 @@
+.container_Comics_Read{
+    padding: 0;
+    .item {
+        margin: 30px 0;
+        img{
+            box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+        }
+    }
+    .distant_Comics{
+        height: 30px;
+    }
+    .container_Read{
+        padding: 0;
+        .reading-detail.box_doc {
+            text-align: center;
+            // .item {
+            //     background: url("/static/images/loading-small.gif") center center no-repeat;
+            // }
+        }
+        .reading-control {
+            margin: 0 0 20px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid white;
+            border-radius: 10px;
+            box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+            .reading-control-top {
+                padding: 0 0 10px 0;
+                a{
+                    cursor: pointer;
+                }
+                nav{
+                    .MuiBreadcrumbs-ol{
+                        .MuiBreadcrumbs-li:nth-child(1){
+                            a{
+                                color: #111111;
+                                &:hover{
+                                    color: #00adff;
+                                }
+                            }
+                        }
+                        a{
+                            color: #111111;
+                            &:hover{
+                                color: #00adff;
+                            }
+                        }
+                    }
+                }
+            }
+            .alert-info {
+                text-align: center;
+            }
+            .information_Comic {
+                margin-top: 10px;
+                display: flex;
+                align-items: baseline;
+                h5 a{
+                    color: #111111;
+                    &:hover{
+                        color: #00adff;
+                    }
+                }
+                span{
+                    font-size: 0.9rem;
+                    padding: 0 0 0 10px;
+                }
+            }
+            .chose-chap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .select_Chap {
+                    padding: 0 20px;
+                    .read_chapter_select a {
+                        display: block;
+                    }
+                    .MuiInput-underline:before {
+                        border-bottom: 2px solid #f50057 !important;
+                    }
+                }
+                .ant-select.ant-select-single.ant-select-show-arrow {
+                    width: 200px;
+                }
+                svg{
+                    cursor: pointer;
+                }
+                button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.follow_Comics.MuiButton-containedSecondary:nth-child(1) {
+                    background: #fba026;
+                }
+                button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.follow_Comics.MuiButton-containedSecondary:nth-child(2) {
+                    background: #bd10e0;
+                }
+                button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.follow_Comics.MuiButton-containedSecondary:nth-child(4) {
+                    background:#00adff;
+                }
+                button:nth-child(5){
+                    background: #8bc34a;
+                }
+            }
+            button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.follow_Comics.MuiButton-containedSecondary {
+                margin: 0 10px;
+            }
+        }
+    }
+    .tabControl{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        padding: 7px;
+        .MuiInput-underline:hover:not(.Mui-disabled):before {
+            border-bottom: 2px solid #f50057 !important;
+        }
+        .MuiInput-underline:before {
+            border-bottom: 2px solid #f50057 !important;
+        }
+        div:nth-child(1) > button{
+            background: #fba026;
+        }
+        div:nth-child(2) > button {
+            background: #bd10e0;
+        }
+        div:nth-child(4) > button {
+            background:#00adff;
+        }
+        div:nth-child(5) > button{
+            background: #8bc34a;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            .ant-select.ant-select-single.ant-select-show-arrow {
+                width: 200px;
+            }
+          
+        }
+        div:nth-child(3){
+            span.MuiButton-label {
+                color: #fff;
+            }
+            button.MuiButtonBase-root.MuiButton-root.MuiButton-text {
+                background-color: #f50057;
+                padding: 8px;
+                margin: 0 10px;
+            }
+        }
+    }
+    button:focus{
+        outline: none;
+    }
+    .select_Chap{
+       div.MuiFormControl-root{
+        width: 200px;
+        .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl {
+            width: 200px;
+            border-bottom: none;
+            background: white;
+        }
+        .MuiInput-underline:after {
+            border-bottom: 2px solid #f50057!important;
+        }
+        }
+        .MuiSelect-select:focus {
+            border-radius: 0;
+            background-color: #ffffff;
+        }
+    }
+}
+.light{
+    background-color: #fff;
+}
+.dark{
+    background: #111111;
+}
+.tab.container-fluid {
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #c5c2c3;
+}
+.tablight{
+    background-color: #fff;
+}
+.tabdark{
+    background: #504c4cd1;
+}
+.container_Comics_Read .container_Read .reading-control .chose-chap .icon{
+    color: #fff;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text{
+    background: #f50057;
+    color: #fff;
+    margin: 0 10px 0 0;
+    padding: 4px 10px!important;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text.icon_Next {
+    margin: 0 0 0 10px;
+}
+#__next > div:nth-child(1) > div > div.tab.tablight.container-fluid > div{
+    padding: 0;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.follow_Comics.MuiButton-containedSecondary {
+    padding: 4px 10px !important;
+    min-width: 24px!important;
+    display: flex;
+    align-items: center;
+}
+#demo-mutiple-name > em{
+    color: #f50057;
+    font-weight: 700;
+}

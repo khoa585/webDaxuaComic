@@ -1,0 +1,31 @@
+.image_item_container {
+    display: flex;
+    a{
+       
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #db78ed99;
+    }
+    div{
+        flex: 1;
+    }
+    .image_time_ago{
+        color: silver ;
+        font-size: 12.5px;
+        line-height: 20px;
+        font-style: italic;
+        overflow: hidden;
+    }
+}
+div:nth-child(1) > div.container > div > div.Store_Left.col-lg-9 > div > div.pagination{
+    .MuiPaginationItem-root {
+        height: 40px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+    }
+}
+#root > div.container > div > div.Store_Left.col-lg-9 > div.containerWrap{
+    height: 100%;
+}

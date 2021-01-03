@@ -1,0 +1,20 @@
+.footerBottom{
+    background: #00adff;
+    position: relative;
+    margin-top: 10px;
+}
+.footerBottom div.container{
+    z-index: 99999;
+    position: relative;
+}
+.footerContent {
+    text-align: center;
+    padding: 2% 0 2% 0;
+    h4{
+        text-transform: uppercase;
+        color: #fff;
+    }
+    span{
+        color: #fff;
+    }
+}
