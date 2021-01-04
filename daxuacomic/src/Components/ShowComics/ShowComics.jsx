@@ -4,7 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { Container, Col, Row } from "react-bootstrap";
 import ImageItem from "./ImageItem";
 import { Link, Route, useHistory } from "react-router-dom";
-import Loading from "../../../Comon/Loading";
+import Loading from "../Comon/Loading";
 import { Pagination } from '@material-ui/lab';
 export default React.memo(function ShowComics({ props, data, numberOfResult, page, setStatePage }) {
   let history = useHistory();
@@ -33,7 +33,6 @@ export default React.memo(function ShowComics({ props, data, numberOfResult, pag
                     image={item.image}
                     alt={item.name}
                     id={item._id}
-                    chapters={item.chapters}
                     views={item.views}
                   />
                 )

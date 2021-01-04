@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-
 import Header from "../Header/Header";
-import Background from "./components/Background/Background";
+import Background from "../Background/Background";
 import "./style.scss";
-import ShowComics from "./components/ShowComics.js/ShowComics";
-import ViewComics from "./components/ViewComics/VisitedComics/ViewComics";
-import Comment from "./components/Comment/Comment";
+import ShowComics from "../ShowComics/ShowComics";
+import ViewComics from "../VisitedComics/ViewComics";
+import Comment from "../Comment/Comment";
 import Footer from "../Footer";
 import BackToTop from "../Comon/BackToTop/BackToTop";
 import { Link, Route, useHistory } from "react-router-dom";
-import { getListComic } from '../../api/comic'
+import { getListComic, searchComics } from '../../api/comic'
+
 import TopComics from "../TopComics/TopComics";
 const Home = (props) => {
   const [data, setData] = React.useState({ data: [], numberOfResult: 0 })
+
   let [page, setPage] = React.useState(1)
   let history = useHistory();
   React.useEffect(() => {
@@ -39,7 +40,7 @@ const Home = (props) => {
 
   return (
     <React.Fragment>
-      <Header />
+      <Header  />
       <Background />
       <div className="distant"></div>
       <Container>

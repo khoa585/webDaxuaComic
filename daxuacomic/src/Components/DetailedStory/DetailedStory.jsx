@@ -21,9 +21,11 @@ import { getDetailComic } from '../../api/comic'
 import ChapterItem from ".//ChapterItem";
 import BackToTop from "../Comon/BackToTop/BackToTop";
 import Loading from "../Comon/Loading";
+import MydModalWithGrid from "../MydModalWithGrid";
 export default React.memo(function DetailedStory(props) {
+  const [modalShow, setModalShow] = React.useState(false);
   const [data, setData] = React.useState([])
-  const { id ,slug} = useParams()
+  const { id, slug } = useParams()
   const [end, setEnd] = React.useState(10);
   let start = 0;
   React.useEffect(() => {
@@ -107,6 +109,14 @@ export default React.memo(function DetailedStory(props) {
                                 <Col className="status_ col-lg-8" lg={8} md={8} sm={8} xs={8}>
                                   Đang tiến hành</Col>
                               </Row>
+                              <Row className="status row">
+                                <Col className="name col-lg-4" lg={4} md={4} sm={4} xs={4}>
+                                  <BsWifi></BsWifi>
+                           &#160; Team dịch
+                           </Col>
+                                <Col className="status_ col-lg-8" lg={8} md={8} sm={8} xs={8}>
+                                  {data.team}</Col>
+                              </Row>
                               <Row>
                                 <Col className="name col-lg-4" lg={4} md={4} sm={4} xs={4}>
                                   <BsTagFill></BsTagFill>
@@ -129,15 +139,15 @@ export default React.memo(function DetailedStory(props) {
                               <div className="read-action mrt10">
                               </div>
                               <div className="read-action mrt10">
-                            
-                                  <span className="btn btn-warning mrb5">
-                                    {" "}
-                           Đọc từ đầu
-                           </span>
-                        
+
                                 <span className="btn btn-warning mrb5">
                                   {" "}
-                           Đọc mới nhất
+                           Đọc từ đầu
+                           </span>
+
+                                <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
+
+                                  Đọc mới nhất
                            </span>
                               </div>
                             </div>
@@ -212,6 +222,11 @@ export default React.memo(function DetailedStory(props) {
       }
       <BackToTop></BackToTop>
       <Footer></Footer>
+      <MydModalWithGrid
+        show={modalShow}
+        data={data}
+        onHide={() => setModalShow(false)}
+      ></MydModalWithGrid>
     </>
   );
 })

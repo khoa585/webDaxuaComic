@@ -17,8 +17,10 @@ import Footer from "../Footer";
 import { Link } from "react-router-dom";
 import './style.scss';
 import { LoginComics } from '../../api/user'
+import { AuthContext } from '../../context/AuthContext'
 import { toast } from 'react-toastify';
 export default function Login() {
+    const { login } = React.useContext(AuthContext);
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .email("Nhập địa chỉ Email hợp lệ '@gmail.com'")
@@ -62,7 +64,7 @@ export default function Login() {
                                     if (data?.data?.token_type === "bearer") {
                                         let token = data?.data?.access_token
                                         let userInfor = data?.data?.user
-                    
+                                        login(token, userInfor)
                                         toast.success(`Xin chào ${userInfor.name}`,)
                                         values.email = ""
                                         values.password = ""

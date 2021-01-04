@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../Header/Header";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import { Select } from '@material-ui/core';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import SkipNextIcon from "@material-ui/icons/SkipNext";
@@ -72,7 +72,7 @@ export default function ViewsComics() {
     const isShowButtonPreviews = () => {
         let isShowPreview = false
         chapter.listChapters?.forEach((item) => {
-            if (item.index > chapter.chapter?.index) {
+            if (item.index < chapter.chapter?.index) {
                 isShowPreview = true;
             }
         });
@@ -82,7 +82,7 @@ export default function ViewsComics() {
     const isShowButtonNext = () => {
         let isShowNext = false;
         chapter.listChapters?.forEach((item) => {
-            if (item.index < chapter.chapter?.index) {
+            if (item.index > chapter.chapter?.index) {
                 isShowNext = true;
             }
         });
@@ -91,7 +91,7 @@ export default function ViewsComics() {
     const onNextChapter = () => {
         let chapterNext;
         chapter.listChapters?.forEach((item) => {
-            if (item.index == chapter.chapter?.index - 1) {
+            if (item.index == chapter.chapter?.index + 1) {
                 chapterNext = item;
             }
         });
@@ -106,7 +106,7 @@ export default function ViewsComics() {
     const onPreviewChapter = () => {
         let chapterNext;
         chapter.listChapters?.forEach((item) => {
-            if (item.index == chapter.chapter?.index + 1) {
+            if (item.index == chapter.chapter?.index - 1) {
                 chapterNext = item;
             }
         });
@@ -121,12 +121,12 @@ export default function ViewsComics() {
     const showOptionsSelect = () => {
         return chapter.listChapters?.map((item) => {
             return (
-                <Option
+                <option
                     key={item._id}
                     value={`/doc-truyen/${to_slug(chapter.chapter?.comic_id?.name)}/${to_slug(item.name)}/${item._id}`}
                 >
                     {item.name}
-                </Option>
+                </option>
             );
         });
     };

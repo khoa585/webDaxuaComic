@@ -1,0 +1,13 @@
+
+.containerWrapper_{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+
+}
+
+body > div.fade.modal.show > div > div > div.modal-header > button > span:nth-child(1):focus{
+    outline: none;
+}

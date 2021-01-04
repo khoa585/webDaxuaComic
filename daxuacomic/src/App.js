@@ -12,12 +12,15 @@ import ViewsComics from './Components/ViewsComics/ViewsComics';
 import Login from './Components/Login/Login';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import AuthContextProvider from "./context/AuthContext";
+import RentComic from './Components/RentComic'
+import Search from './Components/Search';
+import NotFound from './Components/NotFound';
 function App() {
   return (
-    <>
-      <ToastContainer />
+    <AuthContextProvider>
+    
       <BrowserRouter>
-
         <Switch>
           <Route path="/?page=:page" >
             <Home></Home>
@@ -37,9 +40,17 @@ function App() {
           <Route path="/sign-up">
             <Register></Register>
           </Route>
+          <Route path="/danh-sach-truyen-thue">
+            <RentComic></RentComic>
+          </Route>
+          <Route path="/tim-kiem/:slug">
+            <Search></Search>
+          </Route>
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
-    </>
+      <ToastContainer />
+    </AuthContextProvider>
   );
 }
 

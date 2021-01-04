@@ -2,9 +2,9 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import { BsFillEyeFill, BsFillHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { format } from '../../../../Common/FortmatView' 
-import { to_slug } from '../../../../Common/stringHelper'
-import "./ImageItem.scss";
+import { format } from '../../Common/FortmatView' 
+import { to_slug } from '../../Common/stringHelper'
+import "./styles.scss";
 const ImageItem = ({ image, alt, views, like, title,id }) => {
 
   return (
@@ -16,7 +16,7 @@ const ImageItem = ({ image, alt, views, like, title,id }) => {
             <div className="follow_View_Store">
               <span>
                 <BsFillEyeFill />
-                {views != null ? format(views) : 200}
+                {parseInt(views) != null ? format(parseInt(views)) : 200}
               </span>
               <span>
                 <BsFillHeartFill />

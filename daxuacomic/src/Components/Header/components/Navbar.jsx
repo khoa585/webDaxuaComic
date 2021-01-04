@@ -1,7 +1,8 @@
 import { AiTwotoneHome } from "react-icons/ai";
-import { BsChevronDown } from "react-icons/bs";
-import MenuDrop from "./MenuDrop";
-import React, { useState } from "react";
+import React from "react";
+import {
+  Link
+} from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="header__menu">
@@ -13,23 +14,18 @@ const Navbar = () => {
       <li className="navi_item">
         <span>HOT</span>
       </li>
-      <li className="navi_item">
-        <span>THEO DÕI</span>
-      </li>
+
       <li className="navi_item">
         <span>LỊCH SỬ</span>
       </li>
-      <li className="navi_item list_item">
-        <span>THỂ LOẠI</span>
 
-        <BsChevronDown />
-        <div className="dropdown_Wrap">
-          <MenuDrop />
-        </div>
-      </li>
       <li className="navi_item">
-        <span>XẾP HẠNG</span>
+        <Link to="/danh-sach-truyen-thue">
+          <span>DANH SACH TRUYỆN THUÊ</span>
+        </Link>
       </li>
+
+
       <li className="navi_item">
         <span>TÌM TRUYỆN</span>
       </li>
