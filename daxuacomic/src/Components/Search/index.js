@@ -8,36 +8,44 @@ import {
 } from "react-router-dom";
 import { searchComics } from '../../api/comic'
 import "../Home/style.scss";
+import Loading from '../Comon/Loading'
 const Search = (props) => {
     const [data, setData] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
     const { slug } = useParams()
     React.useEffect(() => {
         (async () => {
             let result = await searchComics(slug);
-            console.log(result)
             if (result?.data?.status === "success") {
                 setData(result?.data?.data)
+                setLoading(true)
             }
+      
         })()
     }, [])
- 
+
     return (
         <React.Fragment>
             <Header />
 
             <div className="distant"></div>
-            <Container>
-                {
-                    data.length === 0 ? <span>Trống........</span>
-                        :
-                        <Row>
-                            <Col lg={12} className="Store_Left">
-                                <ShowComic data={data} />
-                            </Col>
-                        </Row>
-                }
+            {
 
-            </Container>
+                <Container className={loading ? '' : "load"}>
+                    {
+                        loading ?
+                            data.length != 0?
+                                <Row>
+                                    <Col lg={12} className="Store_Left">
+                                        <ShowComic data={data} />
+                                    </Col>
+                                </Row>
+                                :
+                                <span>Chúng tôi không tìm thấy tên truyện {slug}</span>
+                            : <Loading></Loading>
+                    }
+                </Container>
+            }
             <div className="distant"></div>
             <BackToTop></BackToTop>
         </React.Fragment>

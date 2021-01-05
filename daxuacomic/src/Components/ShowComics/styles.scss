@@ -29,3 +29,9 @@ div:nth-child(1) > div.container > div > div.Store_Left.col-lg-9 > div > div.pag
 #root > div.container > div > div.Store_Left.col-lg-9 > div.containerWrap{
     height: 100%;
 }
+.load{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 50vh;
+}

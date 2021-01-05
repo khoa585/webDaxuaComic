@@ -9,19 +9,23 @@ import BackToTop from "../Comon/BackToTop/BackToTop";
 import { Link, Route, useHistory } from "react-router-dom";
 import { getListComicRemd } from '../../api/comic'
 import "../Home/style.scss";
+import { AuthContext } from "../../context/AuthContext";
 const RentComic = (props) => {
     const [data, setData] = React.useState([])
-
+    const { token, isLoggedIn, userData } = React.useContext(AuthContext);
     React.useEffect(() => {
         (async () => {
-            let result = await getListComicRemd();
-            if (result?.data?.status === "success") {
-                console.log(result?.data?.data)
-                setData([result?.data?.data] )
+            if (token) {
+                let result = await getListComicRemd(token);
+                if (result?.data?.status === "success") {
+                    console.log(result?.data?.data)
+                    setData([result?.data?.data])
+                }
             }
+
         })()
-    }, [])
-  
+    }, [token])
+
     return (
         <React.Fragment>
             <Header />

@@ -2,17 +2,19 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import { BsFillEyeFill, BsFillHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { format } from '../../Common/FortmatView' 
+import { format } from '../../Common/FortmatView'
 import { to_slug } from '../../Common/stringHelper'
 import "./styles.scss";
-const ImageItem = ({ image, alt, views, like, title,id }) => {
+
+import { AuthContext } from '../../context/AuthContext'
+const ImageItem = ({ image, alt, views, like, title, id }) => {
 
   return (
     <Col lg={3} className="my-3" md={4} sm={6} xs={6}>
       <div className="item_Store">
         <Link to={`/truyen-tranh/${to_slug(title)}/${id}`}>
           <div className="image">
-              <img className="img-fluid" src={image} alt={alt} />
+            <img className="img-fluid" src={image} alt={alt} />
             <div className="follow_View_Store">
               <span>
                 <BsFillEyeFill />
@@ -24,7 +26,7 @@ const ImageItem = ({ image, alt, views, like, title,id }) => {
               </span>
             </div>
             <div className="hot_trend">
-              <span>Hot</span>
+              <span> hot</span>
             </div>
           </div>
 

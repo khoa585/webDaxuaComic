@@ -15,7 +15,7 @@ export const getListHotComics = (type = 1) => {
         type: type,
     });
 };
-export const getAddRent = (id, data) => {
+export const getAddRent = (id, data, token) => {
     return axios_.post(`/api/cart/add/${id}`, {
         user: data.user,
         email: data.email,
@@ -23,13 +23,37 @@ export const getAddRent = (id, data) => {
         ngayHetHanThue: data.ngayHetHanThue,
         image: data.image,
         Views: data.Views,
+        price:data.price,
         nameComic: data.nameComic
+    }, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     });
 };
-export const getListComicRemd = () => {
-    return axios_.get("/api/cart/show",);
+export const getListComicRemd = (token) => {
+    return axios_.get("/api/cart/show", {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
 };
-
+export const getlistbuysid = (id,token) => {
+    return axios_.get(`/api/cart/getlistbuysid/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+};
+// export const searchComics = (name,token) => {
+//     return axios.post("/api/comic/search", {
+//         name
+//     },{
+//         headers: {
+//             'Authorization': `Bearer ${token}`
+//         }
+//     });
+// };
 export const searchComics = (name) => {
     return axios.post("/api/comic/search", {
         name

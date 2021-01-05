@@ -7,14 +7,13 @@ import { AuthContext } from "../../context/AuthContext";
 import { getAddRent } from '../../api/comic'
 import { toast } from 'react-toastify';
 import moment from "moment";
+import { showTimeAgo } from '../../Common/timeHelper';
 function MydModalWithGrid(props) {
-    const { isLoggedIn, userData } = React.useContext(AuthContext);
-    const { data } = props
-
+    const { token, isLoggedIn, userData } = React.useContext(AuthContext);
+    const { data, dataRent } = props
     const checkday = () => {
         return moment().add(30, 'days').calendar();
     }
-    console.log(data)
     const OnPressRent = async () => {
 
         if (!isLoggedIn) {
@@ -26,14 +25,18 @@ function MydModalWithGrid(props) {
             email: userData.email,
             comicId: data._id,
             ngayHetHanThue: checkday(),
-            image:data.image,
-            Views:data.views,
-            nameComic : data.name
+            image: data.image,
+            Views: data.views,
+            nameComic: data.name,
+            price: data.price
         }
-   
-        const resulit = await getAddRent(data._id,data_)
-        if(resulit?.data.status === "success"){
-            toast.success("Thuê Thành Công")
+
+        const resulit = await getAddRent(data._id, data_, token)
+        if (resulit?.data.status === "success") {
+            toast.success("Thành Công")
+            window.location.reload()
+        }else{
+            toast.error("Lỗi")
         }
     }
     return (
@@ -44,7 +47,7 @@ function MydModalWithGrid(props) {
                 centered>
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {data.name}
+                        {data.name ? data.name : data.nameComic}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="show-grid">
@@ -53,15 +56,21 @@ function MydModalWithGrid(props) {
                         <div className="image_Store">
                             <img className="img-fluid" src={data.image} />
                         </div>
-                        <span style={{ padding: 10 }}>{data.name}</span>
+                        <span style={{ padding: 10 }}> {data.name ? data.name : data.nameComic}</span>
                         <div className="price">
-                            <span>200,000 vnđ/1Thang</span>
+                            <span>{data.price}.000 vnđ/1Thang</span>
                         </div>
-
+                        <div className="price">
+                            <span>Ngày hết hạn: {showTimeAgo(dataRent.data.ngayHetHanThue)}</span>
+                        </div>
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={OnPressRent}>Thuê</Button>
+                    {
+                        dataRent.status ? <Button variant="success" onClick={OnPressRent}>Thuê</Button>
+                            : <Button variant="success" onClick={OnPressRent}>Gia Hạn</Button>
+                    }
+
                 </Modal.Footer>
             </Modal>
         </React.Fragment>

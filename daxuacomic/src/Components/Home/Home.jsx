@@ -9,8 +9,8 @@ import Comment from "../Comment/Comment";
 import Footer from "../Footer";
 import BackToTop from "../Comon/BackToTop/BackToTop";
 import { Link, Route, useHistory } from "react-router-dom";
-import { getListComic, searchComics } from '../../api/comic'
 
+import { getListComic } from '../../api/comic'
 import TopComics from "../TopComics/TopComics";
 const Home = (props) => {
   const [data, setData] = React.useState({ data: [], numberOfResult: 0 })
@@ -24,7 +24,7 @@ const Home = (props) => {
         page = parseInt(search.split('?page=')[1])
         setPage(page)
       }
-      let result = await getListComic(page, 20);
+      const result = await getListComic(page, 20);
       if (result?.data?.status === "success") {
         setData({
           "data": result?.data?.data,
@@ -40,7 +40,7 @@ const Home = (props) => {
 
   return (
     <React.Fragment>
-      <Header  />
+      <Header />
       <Background />
       <div className="distant"></div>
       <Container>

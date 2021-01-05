@@ -4,6 +4,7 @@ import { to_slug } from "../../Common/stringHelper";
 import { showTimeAgo } from '../../Common/timeHelper';
 import { Row, Col } from 'react-bootstrap';
 const ChapterItem = ({ chapter, slug }) => {
+
   return (
     <Row className="row item_chap">
       <Col className="chapter" lg={9} md={9} sm={9} xs={9}>

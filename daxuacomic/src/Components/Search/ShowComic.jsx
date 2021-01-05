@@ -7,7 +7,6 @@ import { Link, Route, useHistory } from "react-router-dom";
 import Loading from "../Comon/Loading";
 
 export default React.memo(function ShowComic({ data }) {
-    console.log(data)
     return (
         <div className="containerWrap">
             <div className="page-title">

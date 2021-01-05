@@ -5,7 +5,7 @@ import { GiFemale, GiMale } from "react-icons/gi";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const MainHeader = ({setvalue_,value,onSubmitSearch}) => {
+const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
 
 
   return (
@@ -24,9 +24,9 @@ const MainHeader = ({setvalue_,value,onSubmitSearch}) => {
         <div className="header_Left">
           <div className="act_search">
             <input
-              name="search" 
+              name="search"
               placeholder="Search..."
-              onChange={(e)=>setvalue_(e.target.value)}
+              onChange={(e) => setvalue_(e.target.value)}
             />
           </div>
           <div>
@@ -35,7 +35,7 @@ const MainHeader = ({setvalue_,value,onSubmitSearch}) => {
               title="Subscribe"
               type="submit"
               onClick={onSubmitSearch}
-              disabled={value === '' ? true : false}
+              disabled={!!value.trim() ? false : true}
             >
               <span>
                 <BsSearch />

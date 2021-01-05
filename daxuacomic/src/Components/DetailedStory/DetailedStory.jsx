@@ -10,32 +10,53 @@ import {
   BsTagFill,
   BsWifi,
   BsEyeFill,
-  BsFillStarFill,
-  BsHeart,
 } from "react-icons/bs";
 import "./style.scss";
 import Footer from "../Footer";
 import TopComics from "../TopComics/TopComics";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { getDetailComic } from '../../api/comic'
+import { getDetailComic, getlistbuysid } from '../../api/comic'
 import ChapterItem from ".//ChapterItem";
 import BackToTop from "../Comon/BackToTop/BackToTop";
 import Loading from "../Comon/Loading";
+import { AuthContext } from '../../context/AuthContext'
 import MydModalWithGrid from "../MydModalWithGrid";
+import { format } from '../../Common/FortmatView'
+import { to_slug } from '../../Common/stringHelper'
 export default React.memo(function DetailedStory(props) {
+  const { token, isLoggedIn } = React.useContext(AuthContext);
   const [modalShow, setModalShow] = React.useState(false);
   const [data, setData] = React.useState([])
   const { id, slug } = useParams()
   const [end, setEnd] = React.useState(10);
+  const [loading, setloading] = React.useState(false);
+  const [dataRent, setRent] = React.useState({
+    status: true,
+    data: []
+  })
   let start = 0;
+
   React.useEffect(() => {
     (async () => {
-      const result = await getDetailComic(id);
-      if (result?.data?.status === "success") {
-        setData(result?.data?.data)
+      setloading(true)
+      if (isLoggedIn) {
+        const [result, data] = await Promise.all([getDetailComic(id), getlistbuysid(id, token)])
+        if (result?.data?.status === "success") {
+          setData(result?.data?.data)
+        }
+        if (!(data.data.message === "")) {
+          if (data.data.data.comicId === id) {
+            setRent({
+              status: false,
+              data: data.data.data
+            })
+          }
+        }
+        setloading(false)
       }
     })()
-  }, [])
+  }, [isLoggedIn])
+
   const showGenres = () => {
     return data.genres?.map((item, index) => {
       return (
@@ -48,14 +69,14 @@ export default React.memo(function DetailedStory(props) {
   const addChap = React.useCallback(() => {
     setEnd((prve) => prve + 10)
   }, [])
-
+  console.log(dataRent)
   return (
     <>
       <header className="header">
         <Header></Header>
       </header>
       {
-        data.length != 0 ?
+        !loading ?
           <div className="container_Detail">
             <div className="distant_Comics"></div>
             <Container className="detail_Comics">
@@ -132,23 +153,30 @@ export default React.memo(function DetailedStory(props) {
                            &#160; Lượt xem
                            </Col>
                                 <Col className="status_ col-lg-8" lg={8} md={8} sm={8} xs={8}>
-                                  {data.views}</Col>
+                                  {format(data.views)}</Col>
                               </Row>
                             </div>
                             <div className="follow row">
                               <div className="read-action mrt10">
                               </div>
                               <div className="read-action mrt10">
+                                {
+                                  !dataRent.status ?
+                                    <Link to={`/doc-truyen/${to_slug(data.name)}/${to_slug(data.chapters[0].name)}/${data.chapters[0]._id}`}>
+                                      <span className="btn btn-warning mrb5">
+                                        Đọc
+                           </span> </Link> : <></>
+                                }
 
-                                <span className="btn btn-warning mrb5">
-                                  {" "}
-                           Đọc từ đầu
-                           </span>
+                                {
+                                  dataRent.status ?
+                                    <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
+                                      Thuê
+                         </span> : <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
+                                      Đã Thuê
+                         </span>
+                                }
 
-                                <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
-
-                                  Đọc mới nhất
-                           </span>
                               </div>
                             </div>
                           </div>
@@ -167,40 +195,46 @@ export default React.memo(function DetailedStory(props) {
                       <p>{data.description}</p>
                     </div>
                   </div>
-                  <div className="list_Chapter">
-                    <div>
-                      <h5 className="list-title">
-                        <BsCardList></BsCardList>
-                  &#160; DANH SÁCH CHƯƠNG
-               </h5>
-                    </div>
-                    <div className="listAll_Chapter">
-                      <Row className="row head_Chap">
-                        <Col className="col-lg-9 wrap_Tex" lg={9} md={9} sm={9} xs={9}>
-                          <span>Số chương</span>
-                        </Col>
-                        <Col className="col-lg-3 wrap_Tex" lg={3} md={3} sm={3} xs={3}>
-                          <span>Lượt xem</span>
-                        </Col>
-                      </Row>
-                      {
-                        data.chapters.slice(start, end).map((chapter) => (
-                          <ChapterItem chapter={chapter} slug={slug} key={chapter._id} />
-                        ))
-                      }
-                    </div>
-                    <div className="viewsAdd">
-                      {
-                        end <= data.chapters.length ?
-                          <button type="button" className="btn btn-link" onClick={addChap}>
-                            <TiPlus></TiPlus>
-                              &#160;Xem thêm
-                          </button>
-                          :
-                          <div />
-                      }
-                    </div>
-                  </div>
+
+                  {
+                    !dataRent.status ?
+                      <div className="list_Chapter">
+                        <div>
+                          <h5 className="list-title">
+                            <BsCardList></BsCardList>
+                    &#160; DANH SÁCH CHƯƠNG
+                 </h5>
+                        </div>
+                        <div className="listAll_Chapter">
+                          <Row className="row head_Chap">
+                            <Col className="col-lg-9 wrap_Tex" lg={9} md={9} sm={9} xs={9}>
+                              <span>Số chương</span>
+                            </Col>
+                            <Col className="col-lg-3 wrap_Tex" lg={3} md={3} sm={3} xs={3}>
+                              <span>Lượt xem</span>
+                            </Col>
+                          </Row>
+                          {
+
+                            data.chapters.slice(start, end).map((chapter) => (
+                              <ChapterItem chapter={chapter} slug={slug} key={chapter._id} />
+                            ))
+                          }
+                        </div>
+                        <div className="viewsAdd">
+                          {
+                            end <= data.chapters.length ?
+                              <button type="button" className="btn btn-link" onClick={addChap}>
+                                <TiPlus></TiPlus>
+                                                  &#160;Xem thêm
+                                              </button>
+                              :
+                              <div />
+                          }
+                        </div>
+                      </div>
+                      : <></>
+                  }
                   <div className="comment_comic">
                     {/* <Comment {...{ comicId: data._id, asPath }} /> */}
                   </div>
@@ -225,7 +259,9 @@ export default React.memo(function DetailedStory(props) {
       <MydModalWithGrid
         show={modalShow}
         data={data}
+        dataRent={dataRent}
         onHide={() => setModalShow(false)}
+
       ></MydModalWithGrid>
     </>
   );
