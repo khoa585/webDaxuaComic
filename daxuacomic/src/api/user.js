@@ -9,10 +9,10 @@ export const LoginComics = (user) => {
 export const RegisterComics = (data) => {
 
   return axios.post("/api/auth/register", {
-      email: data.email,
-      password: data.password,
-      name: data.name,
-      password_confirmation: data.password_confirmation
+    email: data.email,
+    password: data.password,
+    name: data.name,
+    password_confirmation: data.password_confirmation
 
   })
 }

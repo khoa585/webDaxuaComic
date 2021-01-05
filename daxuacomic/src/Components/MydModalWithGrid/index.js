@@ -8,7 +8,11 @@ import { getAddRent } from '../../api/comic'
 import { toast } from 'react-toastify';
 import moment from "moment";
 import { showTimeAgo } from '../../Common/timeHelper';
+import {
+    useHistory
+} from "react-router-dom";
 function MydModalWithGrid(props) {
+    let history = useHistory();
     const { token, isLoggedIn, userData } = React.useContext(AuthContext);
     const { data, dataRent } = props
     const checkday = () => {
@@ -18,7 +22,7 @@ function MydModalWithGrid(props) {
 
         if (!isLoggedIn) {
             toast.error("Vui Lòng Đăng Nhập để tiếp tục")
-            return
+            history.push("/login");
         }
         const data_ = {
             user: userData.id,

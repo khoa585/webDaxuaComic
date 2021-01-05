@@ -41,7 +41,7 @@ export const useAuth = () => {
 
   const logout = useCallback(() => {
     setToken(null);
-    // setTokenExpirationDate(null);
+    eraseCookie("token")
     eraseCookie("userData");
   }, []);
   useEffect(() => {

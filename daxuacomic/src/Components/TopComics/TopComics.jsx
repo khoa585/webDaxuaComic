@@ -4,8 +4,6 @@ import { BsFillEyeFill } from "react-icons/bs";
 export default React.memo(function TopComics() {
   const [tab, setTab] = React.useState(1);
   const [comics, setComics] = React.useState([]);
-
-
   React.useEffect(() => {
     (async () => {
       const result = await getListHotComics({ type: tab });
@@ -13,6 +11,9 @@ export default React.memo(function TopComics() {
         setComics(result?.data?.data)
       }
     })()
+    return () => {
+      setComics([])
+    }
   }, [tab])
 
   const setTabNav = (task) => {

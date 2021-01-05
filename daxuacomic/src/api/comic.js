@@ -6,6 +6,14 @@ export const getListComic = (page = 1, numberItem = 20) => {
         numberLimit: numberItem,
     });
 };
+export const getlistAllComic = () => {
+    return axios.post("/api/comic/listAll");
+};
+
+export const deleteComicById = (id) => {
+    return axios.post(`api/comic/delete/${id}`);
+};
+
 
 export const getDetailComic = (comicId) => {
     return axios.get(`/api/comic/detail/${comicId}`);

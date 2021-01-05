@@ -15,7 +15,11 @@ import { ToastContainer } from 'react-toastify';
 import AuthContextProvider from "./context/AuthContext";
 import RentComic from './Components/RentComic'
 import Search from './Components/Search';
+import DashBoard from './Components/Admin/DashBoard'
 import NotFound from './Components/NotFound';
+import LoginAdmin from './Components/Admin/Login/LoginAdmin'
+import GetCarts from './Components/Admin/GetCarts'
+import "antd/dist/antd.css";
 function App() {
   return (
     <AuthContextProvider>
@@ -45,6 +49,15 @@ function App() {
           </Route>
           <Route path="/tim-kiem/:slug">
             <Search></Search>
+          </Route>
+          <Route path="/admin">
+            <DashBoard></DashBoard>
+          </Route>
+          <Route path="/LoginAdmin">
+            <LoginAdmin></LoginAdmin>
+          </Route>
+          <Route path="/aaa/Comic">
+            <GetCarts></GetCarts>
           </Route>
           <Route component={NotFound} />
         </Switch>

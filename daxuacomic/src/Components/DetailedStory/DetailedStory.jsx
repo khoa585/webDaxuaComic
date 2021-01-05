@@ -14,7 +14,7 @@ import {
 import "./style.scss";
 import Footer from "../Footer";
 import TopComics from "../TopComics/TopComics";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getDetailComic, getlistbuysid } from '../../api/comic'
 import ChapterItem from ".//ChapterItem";
 import BackToTop from "../Comon/BackToTop/BackToTop";
@@ -23,6 +23,7 @@ import { AuthContext } from '../../context/AuthContext'
 import MydModalWithGrid from "../MydModalWithGrid";
 import { format } from '../../Common/FortmatView'
 import { to_slug } from '../../Common/stringHelper'
+import Comment from '../Comment/Comment'
 export default React.memo(function DetailedStory(props) {
   const { token, isLoggedIn } = React.useContext(AuthContext);
   const [modalShow, setModalShow] = React.useState(false);
@@ -53,6 +54,12 @@ export default React.memo(function DetailedStory(props) {
           }
         }
         setloading(false)
+      } else {
+        let result = await getDetailComic(id)
+        if (result?.data?.status === "success") {
+          setData(result?.data?.data)
+          setloading(false)
+        }
       }
     })()
   }, [isLoggedIn])
@@ -69,7 +76,7 @@ export default React.memo(function DetailedStory(props) {
   const addChap = React.useCallback(() => {
     setEnd((prve) => prve + 10)
   }, [])
-  console.log(dataRent)
+
   return (
     <>
       <header className="header">
@@ -236,7 +243,9 @@ export default React.memo(function DetailedStory(props) {
                       : <></>
                   }
                   <div className="comment_comic">
-                    {/* <Comment {...{ comicId: data._id, asPath }} /> */}
+                    <Comment
+                      id={id}
+                    />
                   </div>
                 </Col>
                 <Col lg={4}>

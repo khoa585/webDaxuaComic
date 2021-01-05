@@ -10,16 +10,18 @@ import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FaceIcon from "@material-ui/icons/Face";
+
 import Header from '../Header/Header';
 import { Formik, Form, FastField } from 'formik';
 import * as Yup from "yup";
 import Footer from "../Footer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './style.scss';
 import { LoginComics } from '../../api/user'
 import { AuthContext } from '../../context/AuthContext'
 import { toast } from 'react-toastify';
 export default function Login() {
+    let history = useHistory();
     const { login } = React.useContext(AuthContext);
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -60,7 +62,7 @@ export default function Login() {
                                         password: values.password,
                                     }
                                     let data = await LoginComics(user)
-                            
+
                                     if (data?.data?.token_type === "bearer") {
                                         let token = data?.data?.access_token
                                         let userInfor = data?.data?.user
@@ -68,7 +70,7 @@ export default function Login() {
                                         toast.success(`Xin chào ${userInfor.name}`,)
                                         values.email = ""
                                         values.password = ""
-                                
+                                        history.push("/");
                                     } else {
                                         toast.error("Vui Lòng kiểm tra Email hoặc Mật khẩu",)
                                     }
@@ -77,7 +79,7 @@ export default function Login() {
                                 {({
                                     values,
                                     errors,
-                                    handleBlur,
+                                    handleChange,
                                     handleSubmit,
                                     touched
                                 }) => (
@@ -97,29 +99,27 @@ export default function Login() {
                                             helperText={`${errors.email && touched.email ? errors.email : ""}`}
                                         >
                                         </FastField>
-                                        <FastField
-                                            error={errors.password && touched.password ? true : false}
-                                            variant="outlined"
-                                            margin="normal"
-                                            autoComplete="current-password"
-                                            label="Mật Khẩu"
-                                            id="password"
-                                            fullWidth
+                                        <TextField
                                             className={errors.password && touched.password ? "styleBoderSignUp" : ""}
+
+                                            error={errors.password && touched.password ? true : false}
+                                            id="outlined-password-input"
+                                            label="Mật khẩu"
                                             name="password"
-                                            as={TextField}
+                                            type="password"
+                                            autoComplete="current-password"
+                                            onChange={handleChange}
+                                            variant="outlined"
+                                         
                                             value={values.password}
                                             helperText={`${errors.password && touched.password ? errors.password : ""}`}
                                         >
-                                        </FastField>
+                                        </TextField>
                                         <FormControlLabel
                                             control={<Checkbox value="remember" color="primary" />}
                                             label="Ghi Nhớ"
                                         />
                                         <div className="options_login_form">
-
-                                            <span>Quên Mật Khẩu</span>
-
 
                                             <Link to="/sign-up"><span>Đăng Ký </span></Link>
 

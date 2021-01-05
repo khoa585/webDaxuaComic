@@ -5,11 +5,9 @@ import Background from "../Background/Background";
 import "./style.scss";
 import ShowComics from "../ShowComics/ShowComics";
 import ViewComics from "../VisitedComics/ViewComics";
-import Comment from "../Comment/Comment";
 import Footer from "../Footer";
 import BackToTop from "../Comon/BackToTop/BackToTop";
-import { Link, Route, useHistory } from "react-router-dom";
-
+import {  useHistory } from "react-router-dom";
 import { getListComic } from '../../api/comic'
 import TopComics from "../TopComics/TopComics";
 const Home = (props) => {
@@ -56,14 +54,6 @@ const Home = (props) => {
               <div className="ModuleContent">
                 <div className="tab-nav clearfix">
                   <TopComics></TopComics>
-                </div>
-              </div>
-            </div>
-            <div className="new-comments">
-              <div className="ModuleContent">
-                <div className="darkBox">
-                  <h6>Bình luận mới</h6>
-                  <Comment></Comment>
                 </div>
               </div>
             </div>

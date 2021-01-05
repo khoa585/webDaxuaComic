@@ -1,0 +1,63 @@
+section.ant-layout.ant-layout-has-sider{
+    .trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    li.ant-menu-item {
+      display: flex;
+      align-items: center;
+  }
+    .trigger:hover {
+      color: #1890ff;
+    }
+    .logo {
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 16px;
+      cursor: pointer;
+    }
+    .site-layout .site-layout-background {
+      background: #fff;
+    }
+  header.ant-layout-header.site-layout-background {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  span.ant-avatar.ant-dropdown-trigger.triggers.ant-avatar-circle.ant-avatar-icon {
+    margin: 0 24px;
+    cursor: pointer;
+  }
+  .ant-layout-sider-children{
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        height: auto;
+        margin: 0;
+      }
+    }
+  }
+  .ant-dropdown.ant-dropdown-placement-bottomRight.ant-dropdown-hidden{
+      li.ant-dropdown-menu-item {
+        display: flex;
+        align-items: center;
+    }
+  }
+  section.ant-layout.ant-layout-has-sider{
+    .ant-layout-sider-children{
+      ul.ant-menu.ant-menu-dark.ant-menu-root.ant-menu-inline{
+        li.ant-menu-submenu.ant-menu-submenu-inline{
+          .ant-menu-submenu-title{
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }

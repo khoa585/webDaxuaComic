@@ -1,70 +1,22 @@
-.home_comment{
+.comment_container {
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dotted ;
-    .flex_css {
-        display:flex ;
-    }
-    .header_comment {
+    color: #00adff;
+ 
+    .titleCmt{
+        svg{
+            font-size: 20px;
+        }
+        h5{
+            color: #00adff;
+            text-transform: uppercase;
+        }
         display: flex;
-        margin-bottom: 5px;
-        .title {
-            a {
-                font-weight: 400;
-                color: #4e7af3;
-            }
-            a:hover {
-                color: #ff6600;
-                text-decoration: underline;
-            }
-            font-weight: 400;
-            font-size: 14px;
-            flex-grow: 1;
-        }
-        .chapter_show_comment {
-            font-size: 12px;
-            margin-left: 5px;
-            white-space: nowrap;
-            font-style: normal;
-            color: #333;
-            a:hover {
-                text-decoration: underline;
-                color: #ff5454;;
-            }
-        }
+        padding-top: 10px;
     }
-    .image_user {
-        padding: 3px;
-        img{
-            width: 40px;
-            height: 40px;
-        }
+    .pagination{   
+         text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
-    .user_comment_info{
-        flex-grow: 1;
-        margin-left: 10px;
-        .user_name {
-            flex-grow: 1;
-            font-size: 13px;
-            font-weight: 700;
-            color: #03f;
-        }
-        .time_comment {
-            font-size: 11px;
-            white-space: nowrap;
-            color: #999;
-            font-style: italic;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .time{
-                margin-left: 3px;
-                text-decoration: underline dotted;
-            }
-        }
-        .content_chat {
-            margin-top: 10px;
-        }
-    }
-   
 }

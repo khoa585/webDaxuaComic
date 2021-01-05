@@ -162,3 +162,7 @@ p#email-helper-text ,p#password-helper-text{
     position: absolute;
     bottom: -50%;
 }
+#root > div.content_login.container-fluid > div.justify-content-center.row > div > div > form > div:nth-child(2){
+    width: 100%;
+    margin: 20px 0;
+}

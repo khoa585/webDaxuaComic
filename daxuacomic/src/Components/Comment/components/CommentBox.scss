@@ -1,0 +1,146 @@
+.container_comment{
+    width: 100%;
+    .icon_container{
+        padding: 5px 0;
+        .icon_select {
+            padding: 5px;
+            border: 1px solid #ebebeb;
+            font-size: 20px;
+        }
+        .icon_select:hover{
+            background-color: #e3e3e3;
+        }
+        border-bottom:1px solid #ebebeb ;
+    }
+    .commentGame {
+        position: relative;
+        .emoji-mart{
+            position: absolute;
+            z-index: 100;
+        }
+    }
+    .editor {
+       margin-top: 30px;
+        position: relative;
+        border-radius: 20px;
+        textarea {
+            width: 100%;
+            padding: 10px 60px 10px 10px;
+            border-radius: 20px;
+            border: 1px solid #cbcbcb;
+            color: #000;
+        }
+        textarea:focus {
+            box-shadow: 0 0 10px 2px rgba(0,0,0,.15)!important;
+            border-color: rgba(255,255,255,.15)!important;
+             border-color: rgba(0, 0, 0, 0.23)!important;
+        }
+        span {
+           position: absolute;
+            top: 35%;
+            right: 20px;
+            font-size: 1.3rem;
+            svg{
+                &:hover{
+                    transition:.5s;
+                    color: rebeccapurple;
+                }
+            }
+        }
+    }
+    .editor :focus{
+        outline: none;
+    }
+    .loginCmt{
+        display: flex;
+        padding-top: 20px;
+        div.MuiFormControl-root.MuiTextField-root.StyleinputUser {
+             .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {           
+                outline: #f44336!important;
+                box-shadow: #f44336!important;
+                border-color: #f44336!important;
+            }
+               .MuiOutlinedInput-notchedOutline {
+                border-color: #f44336!important;
+            }
+        }
+        div.MuiFormControl-root.MuiTextField-root.StyleinputElPass {
+             .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {           
+                outline: #f44336!important;
+                box-shadow: #f44336!important;
+                border-color: #f44336!important;
+            }
+               .MuiOutlinedInput-notchedOutline {
+                border-color: #f44336!important;
+            }
+        }
+        .MuiFormControl-root.MuiTextField-root:nth-child(1){
+            .MuiFormLabel-root {
+                line-height: 0.5;
+            }
+            .MuiInputLabel-outlined.MuiInputLabel-shrink {
+                transform: translate(14px, -2px) scale(0.75);
+            }
+            .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {           
+                outline: 2px solid rgba(255,255,255,.15)!important;
+                box-shadow: 0 0 10px 2px rgba(0,0,0,.15)!important;
+                border-color: rgba(255,255,255,.15)!important;
+            }
+            .MuiInputLabel-root.Mui-focused{
+                color:  #606770!important;
+            }
+            .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(0, 0, 0, 0.23)!important;
+            }
+            width: 100%;
+            margin-right: 10px;
+            .MuiFormHelperText-root.Mui-error {
+                color: #f44336;
+                position: absolute;
+                bottom: -25px;
+            }
+          
+        }
+        div:nth-child(1) > div,div:nth-child(2) > div{
+            outline: none!important;
+        }
+        #inputUserName,#inputUserMail{
+            padding: 14px 14px;
+        }
+        .MuiFormControl-root.MuiTextField-root:nth-child(2){
+            .MuiFormLabel-root {
+                line-height: 0.5;
+            }
+            .MuiInputLabel-outlined.MuiInputLabel-shrink {
+                transform: translate(14px, -2px) scale(0.75);
+            }
+            .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(0, 0, 0, 0.23);
+            }
+            width: 100%;
+            margin-left: 10px;
+            .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {           
+                outline: 2px solid rgba(255,255,255,.15)!important;
+                box-shadow: 0 0 10px 2px rgba(0,0,0,.15)!important;
+                border-color: rgba(255,255,255,.15)!important;
+            }
+            .MuiInputLabel-root.Mui-focused{
+                color:  #606770!important;
+            }
+            .MuiFormHelperText-root.Mui-error {
+                color: #f44336;
+                position: absolute;
+                bottom: -25px;
+            }
+        }
+        div:nth-child(1) > div{
+            border-radius: 20px;
+        }
+         div:nth-child(2) > div{
+            border-radius: 20px;
+         }
+        input:nth-child(1):focus,input:nth-child(2):focus {
+            outline: none;
+        }
+    }
+}

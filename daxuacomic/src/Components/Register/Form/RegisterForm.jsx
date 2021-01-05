@@ -4,9 +4,10 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { RegisterComics } from '../../../api/user'
 import { toast } from 'react-toastify';
+import {useHistory} from "react-router-dom";
 const RegisterForm = () => {
   let [checkMail, setCheckMail] = useState(false);
-
+  let history = useHistory();
   let validationSchemas = Yup.object({
     firstName: Yup.string().required("Vui lòng điền đầy đủ thông tin"),
     lastName: Yup.string().required("Vui lòng điền đầy đủ thông tin"),
@@ -36,7 +37,7 @@ const RegisterForm = () => {
           const user = {
             email: values.email,
             password: values.password,
-            name: values.firstName + values.lastName,
+            name: values.firstName +" "+ values.lastName,
             password_confirmation: values.repeatPassword,
 
           };
@@ -46,12 +47,12 @@ const RegisterForm = () => {
           if (data?.data?.message === "User successfully registered") {
             toast.success("Đăng Kí thành công");
 
-            // Router.push(`/login?email=${values.email}`);
             values.email = "";
             values.password = "";
             values.repeatPassword = "";
             values.firstName = "";
             values.lastName = "";
+            history.push("/");
           } else {
             if (data?.data?.message?.email[0] === "The email has already been taken.") {
               toast.error("Email đã tồn tại");

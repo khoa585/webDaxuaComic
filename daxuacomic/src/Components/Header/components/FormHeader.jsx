@@ -1,45 +1,25 @@
-import React, { useState, useContext } from "react";
-// import { Input } from "antd";
 
+import React from "react";
+import { toast } from "react-toastify";
 
-const FormHeader = () => {
- 
+const FormHeader = ({ token, logout }) => {
 
+  const logout_ = async () => {
+    if (token) {
+      logout()
+      toast.success("Đăng Xuất thàn công")
+      window.location.reload()
+    }
+
+  }
   return (
-    <form className="form form-login">
-      {/* <div className="field email required">
-        <div className="control">
-          <span>Username</span>
-          <br />
-          <Input placeholder="Email" allowClear name="email" />
-        </div>
-      </div>
-      <br />
-      <div className="field password required">
-        <div className="control">
-          <span>Password</span>
-          <br />
-          <Input.Password placeholder="password" name="password" />
-        </div>
-      </div>
-      <br />
-      <div className="btn-password">
-        <span>Forgot Your Password?</span>
-      </div>
-      <br />
+    <div className="form form-login">
       <div className="btb_login">
-        <button type="submit" className="btn btnLogin" >
-          login
+        <button className="btn btnLogin" onClick={() => logout_()}>
+          Đăng Xuất
         </button>
       </div>
-      <hr />
-      <div className="singup">
-        
-      </div>
-      <div className="my-2">
-    
-      </div> */}
-    </form>
+    </div>
   );
 };
 

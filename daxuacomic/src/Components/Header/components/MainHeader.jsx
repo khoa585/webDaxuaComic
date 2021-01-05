@@ -4,9 +4,10 @@ import { BsSearch } from "react-icons/bs";
 import { GiFemale, GiMale } from "react-icons/gi";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../../context/AuthContext";
+import FormHeader from './FormHeader'
 const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
-
+  const { isLoggedIn, token,logout } = React.useContext(AuthContext);
 
   return (
     <Row className="header_Meta_Group">
@@ -51,11 +52,26 @@ const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
             <li className="nav-item">
               <GiFemale />
             </li>
-
-            <Link to='/login' className="nav-item">
-              <FaUserCircle />
-            </Link>
-
+            {
+              isLoggedIn ?
+                <li className="nav-item">
+                  <FaUserCircle />
+                  <div
+                    className="list__wrapper"
+                  >
+                    <div className="list__item">
+                      <div className="list">
+                        <FormHeader
+                          {...{ token ,logout}}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </li> :
+                <Link to='/login' className="nav-item">
+                  <FaUserCircle />
+                </Link>
+            }
           </div>
         </div>
       </Col>
