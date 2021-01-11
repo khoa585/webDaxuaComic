@@ -44,6 +44,10 @@ export default React.memo(function DetailedStory(props) {
         const [result, data] = await Promise.all([getDetailComic(id), getlistbuysid(id, token)])
         if (result?.data?.status === "success") {
           setData(result?.data?.data)
+          setRent({
+            status: result?.data?.data.rent,
+            data: []
+          })
         }
         if (!(data.data.message === "")) {
           if (data.data.data.comicId === id) {
@@ -58,7 +62,12 @@ export default React.memo(function DetailedStory(props) {
         let result = await getDetailComic(id)
         if (result?.data?.status === "success") {
           setData(result?.data?.data)
+          setRent({
+            status: result?.data?.data.rent,
+            data: []
+          })
           setloading(false)
+
         }
       }
     })()
@@ -179,8 +188,10 @@ export default React.memo(function DetailedStory(props) {
                                   dataRent.status ?
                                     <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
                                       Thuê
+                         </span> : dataRent.data.length === 0 ? <span className="btn btn-warning mrb5">
+                                      Miễn Phí đọc
                          </span> : <span onClick={() => setModalShow(true)} className="btn btn-warning mrb5">
-                                      Đã Thuê
+                                        Đã Thuê
                          </span>
                                 }
 

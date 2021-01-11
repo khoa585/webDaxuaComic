@@ -8,6 +8,7 @@ import { getAddRent } from '../../api/comic'
 import { toast } from 'react-toastify';
 import moment from "moment";
 import { showTimeAgo } from '../../Common/timeHelper';
+import { format } from '../../Common/FortmatView';
 import {
     useHistory
 } from "react-router-dom";
@@ -39,10 +40,11 @@ function MydModalWithGrid(props) {
         if (resulit?.data.status === "success") {
             toast.success("Thành Công")
             window.location.reload()
-        }else{
+        } else {
             toast.error("Lỗi")
         }
     }
+
     return (
         <React.Fragment
         >
@@ -62,11 +64,20 @@ function MydModalWithGrid(props) {
                         </div>
                         <span style={{ padding: 10 }}> {data.name ? data.name : data.nameComic}</span>
                         <div className="price">
-                            <span>{data.price}.000 vnđ/1Thang</span>
+                            <span>{format(data.price)} vnđ/Tháng</span>
                         </div>
-                        <div className="price">
-                            <span>Ngày hết hạn: {showTimeAgo(dataRent.data.ngayHetHanThue)}</span>
-                        </div>
+                        {
+                            dataRent.data.length === 0 && dataRent.status === false ? (
+                                <div className="price">
+                                    <span>Miễn phí</span>
+                                </div>
+                            ) : !dataRent.status && dataRent.data.ngayHetHanThue ? (
+                                <div className="price">
+                                    <span>Ngày hết hạn: {showTimeAgo(dataRent.data.ngayHetHanThue)}</span>
+                                </div>
+                            ) : (<></>)
+                        }
+
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>

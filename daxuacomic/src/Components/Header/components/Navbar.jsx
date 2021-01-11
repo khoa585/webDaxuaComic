@@ -6,33 +6,33 @@ import {
 const Navbar = () => {
   return (
     <nav className="header__menu">
-      <li className=" navi_item active">
-        <Link to="/">
+      <Link to="/" className="navi_item">
+        <li className="navi_item active">
           <span>
             <AiTwotoneHome />
           </span>
-        </Link>
-      </li>
-      <li className="navi_item">
-        <Link to="/">
+        </li>
+      </Link>
+      <Link to="/" className="navi_item">
+        <li className="navi_item">
           <span>HOT</span>
-        </Link>
-      </li>
-      <li className="navi_item">
-        <Link to="/">
+        </li>
+      </Link>
+      <Link to="/lich-su" className="navi_item">
+        <li className="navi_item" className="navi_item">
           <span>LỊCH SỬ</span>
-        </Link>
-      </li>
-      <li className="navi_item">
-        <Link to="/danh-sach-truyen-thue">
-          <span>DANH SACH TRUYỆN THUÊ</span>
-        </Link>
-      </li>
-      <li className="navi_item">
-        <Link to="/">
+        </li>
+      </Link>
+      <Link to="/danh-sach-truyen-thue" className="navi_item">
+        <li className="navi_item">
+          <span>TRUYỆN THUÊ</span>
+        </li>
+      </Link>
+      <Link to="/"  className="navi_item">
+        <li className="navi_item">
           <span>TÌM TRUYỆN</span>
-        </Link>
-      </li>
+        </li>
+      </Link>
     </nav>
   );
 };

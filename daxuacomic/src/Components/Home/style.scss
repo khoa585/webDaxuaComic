@@ -224,9 +224,12 @@ body {
           justify-content: space-between;
           background: #00adff;
           color: #fff;
+          a.navi_item {
+            width: 100%;
+        }
           li.navi_item.active {
             border-left: 1px solid #fff;
-            width: 30%;
+            width: 100%;
             span {
               svg {
                 font-size: 1.2rem;
@@ -446,6 +449,7 @@ body {
           }
           div.list_Stote_r {
             padding: 0 10px;
+            width: 100%;
             h6.title {
               a {
                 font-size: 0.9rem;
@@ -629,4 +633,98 @@ div.Store_Left.col-lg-9 > div > .pagination{
 }
 .image{
   text-align: center;
+}
+@media only screen and (max-width: 1192px ) {
+  .container_Slide {
+     .stack .card img {
+      height: 300px;
+      cursor: pointer;
+  }
+  }
+}
+@media only screen and (max-width: 992px ) {
+  .container_Slide {
+     .stack .card img {
+      height: 300px;
+      cursor: pointer;
+  }
+  }
+  .header__menu{
+    font-size: 12px;
+  }
+  .stack .card img {
+     height: 250px;
+     cursor: pointer;
+ }
+}
+@media only screen and (max-width: 894px ) {
+  .container_Slide {
+     .stack .card img {
+      height: 230px;
+      cursor: pointer;
+     }
+  }
+  .header__menu{
+    font-size: 8px;
+  }
+}
+@media only screen and (max-width: 672px ) {
+  .container_Slide {
+     .stack .card img {
+      height: 200px;
+      cursor: pointer;
+  }
+  }
+}
+@media only screen and (max-width: 768px ) {
+  .container .Store_Left .list_Stote {
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 50px 0;
+}
+.header .container .header_Meta_Group div.col-lg-10 .header_Left div.act_search input {
+  padding: 5px 10px;
+  width: 90%;
+  border: none;
+}
+}
+@media only screen and (max-width: 570px ) {
+  .container_Slide {
+     .stack .card img {
+      height: 100px;
+      cursor: pointer;
+  }
+  }
+  .container_Slide .stack {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: calc(50vh + 550px);
+}
+  .container_Slide {
+    height: calc(50vh + 50px);
+  }
+  .Store_Left{
+    .list_Stote{
+      .col-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    }
+    }
+    #root > div.container > div > div.Store_Left.col-lg-9 > div.containerWrap {
+     height: inherit!important; 
+  }
+  .header .container .header_Meta_Group div.col-lg-10 div:nth-child(2).header_Right svg {
+    font-size: 0.6rem;
+}
+.header .container .header_Meta_Group {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 }

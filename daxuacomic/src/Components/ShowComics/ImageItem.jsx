@@ -6,11 +6,10 @@ import { format } from '../../Common/FortmatView'
 import { to_slug } from '../../Common/stringHelper'
 import "./styles.scss";
 
-import { AuthContext } from '../../context/AuthContext'
-const ImageItem = ({ image, alt, views, like, title, id }) => {
+const ImageItem = ({ image, alt, views, like, title, id, hot }) => {
 
   return (
-    <Col lg={3} className="my-3" md={4} sm={6} xs={6}>
+    <Col lg={3} className="my-3" md={3} sm={4} xs={3}>
       <div className="item_Store">
         <Link to={`/truyen-tranh/${to_slug(title)}/${id}`}>
           <div className="image">
@@ -25,9 +24,14 @@ const ImageItem = ({ image, alt, views, like, title, id }) => {
                 {like != null ? format(parseInt(like) + Math.floor(Math.random() * 10) + 1) : 100}
               </span>
             </div>
-            <div className="hot_trend">
-              <span> hot</span>
-            </div>
+            {
+              hot === 1 ? (
+                <div className="hot_trend">
+                  <span> hot</span>
+                </div>
+              ) : <div></div>
+            }
+
           </div>
 
         </Link>

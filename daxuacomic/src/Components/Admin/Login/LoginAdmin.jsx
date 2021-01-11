@@ -8,7 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 function LoginAdmin(props) {
     const userRef = useRef("");
     let history = useHistory();
-    const { login } = React.useContext(AuthContext);
+    const { login ,isLoggedIn} = React.useContext(AuthContext);
     const passRef = useRef("");
     const LoginUserAction = async (e) => {
         e.preventDefault();
@@ -17,37 +17,21 @@ function LoginAdmin(props) {
             password: passRef.current.value
         }
         let data = await LoginComics(user);
-        console.log(data)
         if (data?.data?.token_type === "bearer") {
             let token = data?.data?.access_token
             let userInfor = data?.data?.user
             login(token, userInfor)
             toast.success(`Xin chào ${userInfor.name}`,)
-            history.push("/admim");
+            history.push("/admin");
         } else {
             toast.error("Vui Lòng kiểm tra Email hoặc Mật khẩu",)
         }
     }
     useEffect(() => {
-        const getlogin = () => {
-            const inputs = document.querySelectorAll(".input");
-            function addcl() {
-                let parent = this.parentNode.parentNode;
-                parent.classList.add("focus");
-            }
-            function remcl() {
-                let parent = this.parentNode.parentNode;
-                if (this.value == "") {
-                    parent.classList.remove("focus");
-                }
-            }
-            inputs.forEach(input => {
-                input.addEventListener("focus", addcl);
-                input.addEventListener("blur", remcl);
-            });
+        if(isLoggedIn){
+            history.push("/admin")
         }
-        getlogin()
-    }, [])
+    }, [isLoggedIn])
     return (
         <div className="contain-login">
             <div className="login-content">

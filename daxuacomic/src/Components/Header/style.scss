@@ -215,7 +215,10 @@
           justify-content: space-between;
           background: #00adff;
           color: #fff;
-          li.navi_item.active {
+          a{
+            width: 100%;
+          }
+          .navi_item.active {
             border-left: 1px solid #fff;
             width: 30%;
             span {
@@ -227,10 +230,10 @@
               }
             }
           }
-          li.navi_item.list_item:hover .dropdown_Wrap {
+          .navi_item.list_item:hover .dropdown_Wrap {
             display: block;
           }
-          li.list_item {
+          .list_item {
             position: relative;
             justify-content: space-around !important;
             svg {

@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import FormHeader from './FormHeader'
 const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
-  const { isLoggedIn, token,logout } = React.useContext(AuthContext);
+  const { isLoggedIn, token, logout } = React.useContext(AuthContext);
 
   return (
     <Row className="header_Meta_Group">
-      <Col lg={2}>
+      <Col lg={2} md={2} sm={2} xs={2}>
         <div className="header_Logo_Right">
           <Link to="/">
             <img
@@ -21,7 +21,7 @@ const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
           </Link>
         </div>
       </Col>
-      <Col lg={10}>
+      <Col lg={10}  md={10} sm={10} xs={10}>
         <div className="header_Left">
           <div className="act_search">
             <input
@@ -47,11 +47,16 @@ const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
         <div className="header_Right">
           <div className="nav-right">
             <li className="nav-item">
-              <GiMale />
+              <Link to="/">
+                <GiMale />
+              </Link>
             </li>
             <li className="nav-item">
-              <GiFemale />
+              <Link  to="/">
+                <GiFemale />
+              </Link>
             </li>
+
             {
               isLoggedIn ?
                 <li className="nav-item">
@@ -62,7 +67,7 @@ const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
                     <div className="list__item">
                       <div className="list">
                         <FormHeader
-                          {...{ token ,logout}}
+                          {...{ token, logout }}
                         />
                       </div>
                     </div>

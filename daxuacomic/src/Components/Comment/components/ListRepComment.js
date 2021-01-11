@@ -3,6 +3,7 @@ import './DetialComment.scss';
 import { BsChevronDown, BsShieldShaded } from "react-icons/bs";
 
 function ListRepComment({ list }) {
+    console.log(list)
     return list.map((task, index) => {
         return (
             <div className="repCmt" key={index}>

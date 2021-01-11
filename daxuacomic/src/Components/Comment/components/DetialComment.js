@@ -51,7 +51,7 @@ function DetialComment({ item, id }) {
                             <div className="Inputcmt">
                                 <div className="authorImg">
                                     <img
-                                        src="https://scontent-hkg4-2.xx.fbcdn.net/v/t1.15752-9/136376866_1636328706539776_7350719560112586704_n.jpg?_nc_cat=104&ccb=2&_nc_sid=ae9488&_nc_ohc=IW6xkXvaLC0AX_Xg_JQ&_nc_ht=scontent-hkg4-2.xx&oh=1406c8e7b38ef23d2b63f4fe1ebf46d4&oe=601B3C1C"
+                                        src="https://1.bp.blogspot.com/-m3UYn4_PEms/Xnch6mOTHJI/AAAAAAAAZkE/GuepXW9p7MA6l81zSCnmNaFFhfQASQhowCLcBGAsYHQ/s1600/Cach-Lam-Avatar-Dang-Hot%2B%25281%2529.jpg"
                                         alt="logo"
                                     ></img>
                                 </div>

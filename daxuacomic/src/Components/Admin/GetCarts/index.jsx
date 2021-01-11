@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, Route, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { Breadcrumb, Table, Space, Button } from 'antd';
-import { getlistAllComic ,deleteComicById} from '../../../api/comic'
+import { getlistAllComic, deleteComicById } from '../../../api/comic'
 import { v4 as uuid4 } from 'uuid';
 import { toast } from 'react-toastify';
 export default function GetCarts() {
     const [data, setData] = React.useState([])
-    let history = useHistory();
     React.useEffect(() => {
         (async () => {
             const result = await getlistAllComic();
@@ -17,11 +16,12 @@ export default function GetCarts() {
                 })
             }
         })()
+        return () => setData([])
     }, [])
 
     const onDeleteNews = async (id) => {
         const result = await deleteComicById(id)
-        if(result.data.status === "success"){
+        if (result.data.status === "success") {
             toast.success("Xóa thành công");
             window.location.reload()
         }
@@ -33,12 +33,12 @@ export default function GetCarts() {
         {
             title: 'Tiêu Đề',
             dataIndex: 'name',
-            key: `acvd${uuid4()}`,
+            key: `a${uuid4()}`,
             width: '20%'
         },
         {
             title: 'Hình Ảnh',
-            key: `acvd${uuid4()}`,
+            key: `ac${uuid4()}`,
             render: (data) => {
                 return (
                     <img src={data.image} style={{ width: "20%" }}></img>
@@ -48,23 +48,23 @@ export default function GetCarts() {
         },
         {
             title: 'Giá',
-            key: `acvd${uuid4()}`,
+            key: `acv${uuid4()}`,
             dataIndex: 'price',
             width: '20%'
         },
         {
             title: 'Tình Trạng',
-            key: `acvd${uuid4()}`,
+            key: `d${uuid4()}`,
             width: '20%',
             render: (data) => {
                 return (
-                        <span onClick={() => onDeleteNews(data._id)}>{data.rent ? "Cho thuê" : "Miễn Phí"}</span>
+                    <span onClick={() => onDeleteNews(data._id)}>{data.rent ? "Cho thuê" : "Miễn Phí"}</span>
                 )
             }
         },
         {
             title: 'Hành Động',
-            key: `aacd${uuid4()}`,
+            key: `aacvd${uuid4()}`,
             width: '20%',
             render: (data) => {
                 return (

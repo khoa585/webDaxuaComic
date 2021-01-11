@@ -18,12 +18,12 @@ import Search from './Components/Search';
 import DashBoard from './Components/Admin/DashBoard'
 import NotFound from './Components/NotFound';
 import LoginAdmin from './Components/Admin/Login/LoginAdmin'
-import GetCarts from './Components/Admin/GetCarts'
+import PrivateRoute from './Components/Admin/PrivateRoute'
 import "antd/dist/antd.css";
+import History from './Components/History';
 function App() {
   return (
     <AuthContextProvider>
-    
       <BrowserRouter>
         <Switch>
           <Route path="/?page=:page" >
@@ -50,16 +50,18 @@ function App() {
           <Route path="/tim-kiem/:slug">
             <Search></Search>
           </Route>
-          <Route path="/admin">
-            <DashBoard></DashBoard>
+          <Route path="/lich-su">
+            <History></History>
           </Route>
-          <Route path="/LoginAdmin">
+          <PrivateRoute path="/admin">
+            <DashBoard></DashBoard>
+          </PrivateRoute>
+          <Route path="/dang-nhap-admin">
             <LoginAdmin></LoginAdmin>
           </Route>
-          <Route path="/aaa/Comic">
-            <GetCarts></GetCarts>
+          <Route >
+            <NotFound></NotFound>
           </Route>
-          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
       <ToastContainer />

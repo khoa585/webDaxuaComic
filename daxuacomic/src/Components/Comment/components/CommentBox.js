@@ -58,7 +58,8 @@ function CommentBox({ id, commentId }) {
                     <textarea rows="4" onChange={hanlderChangeTextArena} placeholder="Nhập bình luận" name="cmt" ref={register} />
                     <button style={{
                         padding: "0px 20px",
-                        background: "#00adff"
+                        background: "#00adff",
+                        color:'#fff'
                     }} type="submit" disabled={!showSubmit}><AiOutlineSend></AiOutlineSend></button>
                 </div>
             </form >

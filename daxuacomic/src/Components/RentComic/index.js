@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import Header from "../Header/Header";
-import Background from "../Background/Background";
-
 import ShowComic from "./ShowComic";
-import Footer from "../Footer";
 import BackToTop from "../Comon/BackToTop/BackToTop";
-import { Link, Route, useHistory } from "react-router-dom";
 import { getListComicRemd } from '../../api/comic'
 import "../Home/style.scss";
 import { AuthContext } from "../../context/AuthContext";
 const RentComic = (props) => {
     const [data, setData] = React.useState([])
-    const { token, isLoggedIn, userData } = React.useContext(AuthContext);
+    const { token} = React.useContext(AuthContext);
     React.useEffect(() => {
         (async () => {
             if (token) {
@@ -22,7 +18,6 @@ const RentComic = (props) => {
                     setData([result?.data?.data])
                 }
             }
-
         })()
     }, [token])
 
