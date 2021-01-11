@@ -73,7 +73,7 @@ const MainHeader = ({ setvalue_, value, onSubmitSearch }) => {
                     </div>
                   </div>
                 </li> :
-                <Link to='/login' className="nav-item">
+                <Link to='/dang-nhap' className="nav-item">
                   <FaUserCircle />
                 </Link>
             }

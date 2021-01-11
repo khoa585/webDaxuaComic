@@ -35,13 +35,13 @@ function App() {
           <Route path="/truyen-tranh/:slug/:id" >
             <DetailedStory></DetailedStory>
           </Route>
-          <Route path="/login" >
+          <Route path="/dang-nhap" >
             <Login></Login>
           </Route>
           <Route path="/doc-truyen/:slug/:slug/:id" >
             <ViewsComics></ViewsComics>
           </Route>
-          <Route path="/sign-up">
+          <Route path="/dang-ky">
             <Register></Register>
           </Route>
           <Route path="/danh-sach-truyen-thue">

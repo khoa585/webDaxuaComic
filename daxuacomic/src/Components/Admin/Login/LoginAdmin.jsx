@@ -8,16 +8,17 @@ import { Link, useHistory } from "react-router-dom";
 function LoginAdmin(props) {
     const userRef = useRef("");
     let history = useHistory();
-    const { login ,isLoggedIn} = React.useContext(AuthContext);
+    const { login, isLoggedIn ,userData} = React.useContext(AuthContext);
     const passRef = useRef("");
     const LoginUserAction = async (e) => {
         e.preventDefault();
         const user = {
-            email:userRef.current.value,
+            email: userRef.current.value,
             password: passRef.current.value
         }
         let data = await LoginComics(user);
-        if (data?.data?.token_type === "bearer") {
+
+        if (data?.data?.token_type === "bearer" && data?.data.user.admin === 1) {
             let token = data?.data?.access_token
             let userInfor = data?.data?.user
             login(token, userInfor)
@@ -28,10 +29,30 @@ function LoginAdmin(props) {
         }
     }
     useEffect(() => {
-        if(isLoggedIn){
+        if (isLoggedIn && userData.admin === 1) {
             history.push("/admin")
         }
     }, [isLoggedIn])
+    useEffect(() => {
+        const getlogin = () => {
+            const inputs = document.querySelectorAll(".input");
+            function addcl() {
+                let parent = this.parentNode.parentNode;
+                parent.classList.add("focus");
+            }
+            function remcl() {
+                let parent = this.parentNode.parentNode;
+                if (this.value == "") {
+                    parent.classList.remove("focus");
+                }
+            }
+            inputs.forEach(input => {
+                input.addEventListener("focus", addcl);
+                input.addEventListener("blur", remcl);
+            });
+        }
+        getlogin()
+    }, [])
     return (
         <div className="contain-login">
             <div className="login-content">

@@ -121,7 +121,7 @@ export default function Login() {
                                         />
                                         <div className="options_login_form">
 
-                                            <Link to="/sign-up"><span>Đăng Ký </span></Link>
+                                            <Link to="/dang-ky"><span>Đăng Ký </span></Link>
 
                                         </div>
                                         <Button

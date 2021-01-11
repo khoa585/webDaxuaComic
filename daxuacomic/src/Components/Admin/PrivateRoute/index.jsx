@@ -6,7 +6,7 @@ import {
 import { AuthContext } from '../../../context/AuthContext'
 function PrivateRoute({ children, ...rest }) {
     const { isLoggedIn, userData } = React.useContext(AuthContext);
-
+    console.log(userData.admin !== 1)
     return (
         <Route
             {...rest}

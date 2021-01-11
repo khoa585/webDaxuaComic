@@ -10,13 +10,18 @@ import BackToTop from "../Comon/BackToTop/BackToTop";
 import {  useHistory } from "react-router-dom";
 import { getListComic } from '../../api/comic'
 import TopComics from "../TopComics/TopComics";
+import Advertisement from "../Advertisement";
+import Adob from '../Advertisement/Adob'
 const Home = (props) => {
   const [data, setData] = React.useState({ data: [], numberOfResult: 0 })
-
+  const [show, setShow] = React.useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   let [page, setPage] = React.useState(1)
   let history = useHistory();
   React.useEffect(() => {
     (async () => {
+      handleShow()
       let { search } = history.location
       if (search != '') {
         page = parseInt(search.split('?page=')[1])
@@ -63,6 +68,8 @@ const Home = (props) => {
       <div className="distant"></div>
       <Footer></Footer>
       <BackToTop></BackToTop>
+      <Advertisement {...{show,handleClose}}></Advertisement>
+      <Adob></Adob>
     </React.Fragment>
   );
 }

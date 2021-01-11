@@ -7,8 +7,8 @@ function Footer(props) {
             <div className="footerBottom">
                 <Container>
                     <div className="footerContent">
-                        <h4>TruyenTranh.24</h4>
-                        <span>Copyright © 2015 TruyenTranh.24</span>
+                        <h4>DUMMIES.24</h4>
+                        <span>T1 LCK</span>
                     </div>
                 </Container>
             </div>

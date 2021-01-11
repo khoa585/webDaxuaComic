@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
-
+import {Link} from "react-router-dom"
 export default function ViewComics() {
   const [list, setList] = useState([]);
   const handleDelete = (id) => {
@@ -22,7 +22,7 @@ export default function ViewComics() {
     <div className="visited-comics">
       <div className="visited_History">
         <h6>Lịch sử đọc truyện</h6>
-        <span className="view-all">Xem tất cả</span>
+        <Link to="/lich-su"><span className="view-all">Xem tất cả</span></Link>
       </div>
       <div className="list-History-Store">
         {
