@@ -23,7 +23,7 @@ function MydModalWithGrid(props) {
 
         if (!isLoggedIn) {
             toast.error("Vui Lòng Đăng Nhập để tiếp tục")
-            history.push("/login");
+            history.push("/dang-nhap");
         }
         const data_ = {
             user: userData.id,

@@ -46,7 +46,7 @@ function CommentBox({ id, commentId }) {
             }
         } else {
             toast.error("Vui Lòng Đăng Nhập để tiếp tục")
-            history.push("/login");
+            history.push("/dang-nhap");
         }
     };
     return (
