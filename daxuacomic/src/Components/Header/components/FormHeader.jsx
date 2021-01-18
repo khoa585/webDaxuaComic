@@ -7,6 +7,7 @@ const FormHeader = ({ token, logout }) => {
   const logout_ = async () => {
     if (token) {
       logout()
+      localStorage.removeItem("truyenmoi_history")
       toast.success("Đăng Xuất thành công")
       window.location.reload()
     }

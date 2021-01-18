@@ -3,7 +3,6 @@ import './DetialComment.scss';
 import { BsChevronDown, BsShieldShaded } from "react-icons/bs";
 
 function ListRepComment({ list }) {
-    console.log(list)
     return list.map((task, index) => {
         return (
             <div className="repCmt" key={index}>
@@ -19,8 +18,8 @@ function ListRepComment({ list }) {
                             <span className="member"><BsShieldShaded></BsShieldShaded>&nbsp;Thành Viên</span>&nbsp;
                                         <span className="createdAt">{task.createdAt}</span>
                             <div>
-                                <span className="authorName">{task.content}</span>
-                                <span className="authorCmt">{task.name}</span>
+                                <span className="authorName">{task.name}</span>
+                                <span className="authorCmt">{task.content}</span>
                             </div>
                         </div>
                     </div>

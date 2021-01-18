@@ -42,6 +42,7 @@ export default React.memo(function DetailedStory(props) {
       setloading(true)
       if (isLoggedIn) {
         const [result, data] = await Promise.all([getDetailComic(id), getlistbuysid(id, token)])
+     
         if (result?.data?.status === "success") {
           setData(result?.data?.data)
           setRent({

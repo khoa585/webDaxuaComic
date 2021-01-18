@@ -52,7 +52,7 @@ const RegisterForm = () => {
             values.repeatPassword = "";
             values.firstName = "";
             values.lastName = "";
-            history.push("/");
+            history.push("/dang-ky");
           } else {
             if (data?.data?.message?.email[0] === "The email has already been taken.") {
               toast.error("Email đã tồn tại");

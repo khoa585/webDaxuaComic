@@ -10,18 +10,23 @@ function Comment({ id }) {
     let [comments, setComments] = useState([]);
     React.useEffect(() => {
         (async () => {
-            if (isLoggedIn) {
-                const result = await getListCmt(id, token)
-                if (result.data.status === "success") {
-                    setComments(result.data.data)
-                }
+            // if (isLoggedIn) {
+            //     const result = await getListCmt(id, token)
+            //     if (result.data.status === "success") {
+            //         setComments(result.data.data)
+            //     }
+            // }
+
+            const result = await getListCmt(id, token)
+            if (result.data.status === "success") {
+                setComments(result.data.data)
             }
 
         })()
         return () => {
             setComments([])
         }
-    }, [isLoggedIn])
+    }, [])
 
     const showDetialComment = () => {
         return comments.map((item, index) => {

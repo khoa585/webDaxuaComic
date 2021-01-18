@@ -53,15 +53,7 @@ export const getlistbuysid = (id,token) => {
         }
     });
 };
-// export const searchComics = (name,token) => {
-//     return axios.post("/api/comic/search", {
-//         name
-//     },{
-//         headers: {
-//             'Authorization': `Bearer ${token}`
-//         }
-//     });
-// };
+
 export const searchComics = (name) => {
     return axios.post("/api/comic/search", {
         name
